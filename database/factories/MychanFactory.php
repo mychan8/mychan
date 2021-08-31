@@ -36,10 +36,11 @@ class MychanFactory extends Factory
     {
         return [
             'user' => $this->faker->unique()->name(),
+            'nick' => $this->faker->name(),
             'title' => $this->faker->unique()->text(15),
             'content' => $this->faker->paragraph(5),
             'visitor' => $this->faker->ipv4(),
-            'password' => $this->randomPassword(),
+            'password' => '$2y$10$xdHMbLJk2O0aJ47CiLbwwehS33r67vSLuxDZf5gVwqmkaGN0/h6xS',
             'remarkID' => $this->randomPassword()
         ];
     }

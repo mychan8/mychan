@@ -16,7 +16,8 @@ class CreateMychanTable extends Migration
         Schema::create('mychans', function (Blueprint $table) {
             $table->id();
             $table->string('remarkID')->unique();
-            $table->string('user', 30);
+            $table->string('user', 30)->nullable()->unique();
+            $table->string('nick', 30)->nullable();
             $table->string('title', 30)->nullable();
             $table->text('content');
             $table->string('email')->nullable();
@@ -25,7 +26,7 @@ class CreateMychanTable extends Migration
 
             $table->ipAddress('visitor');
             $table->ipAddress('ban')->nullable();
-            $table->string('password', 255)->nullable();
+            $table->string('password', 255);
             $table->timestamps();
         });
     }

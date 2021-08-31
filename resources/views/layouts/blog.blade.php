@@ -42,12 +42,17 @@
                     rows="40" 
                     cols="100" 
                     maxlength="500"
-                    minlength="10">@yield('tag')</textarea>
-                </div>
+                    minlength="10" value="{{ old('content') }}"></textarea>
+                    @error('content')
+                    <br>
+                        <small style="color: gold;">*{{ $message }}</small>
+                    <br>
+                    @enderror
+                </div>     
                 <div class="center" id="grad2">
                     <div>
-                        <input type="text" name="user" id="name" maxlength="30" placeholder="Nombre">
-                        <input type="text" name="email" maxlength="30" id="email" placeholder="Email">
+                        <input type="text" name="user" id="name" maxlength="30" placeholder="Nombre" value="{{ old('user') }}">
+                        <input type="text" name="email" maxlength="30" id="email" placeholder="Email" value="{{ old('email') }}">
                         <input type="hidden" name="goto" value="@yield('title')">
                         <input type="submit" name="submit" id="btn" value="Postear">
                     </div>

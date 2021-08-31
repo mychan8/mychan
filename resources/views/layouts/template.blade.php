@@ -18,7 +18,7 @@
 </head>
 <body style="background-image: url({{ URL::asset('img/starsbg.gif') }});">
     <div class="header" id="grad">
-        <h1><a href="#">MyChan</a></h1>
+        <p><a href="#">MyChan</a>@yield('account')</p>
     </div>
 <section class="home">
     <div class="in-flex">
@@ -27,9 +27,9 @@
         </div>
         <div>
             <div style="background-color: black;">
-                <h2>!IMPORTANTE</h2>
+                <h2>IMPORTANTE</h2>
             </div>
-            <div>
+            <div style="background: #00002F;">
                 <h3>Reglas</h3>
                 <ul style="list-style-type: none; text-align: center;">
                     <li>I. Este sitio es para mayores de 18 años, al entrar y participar aceptas ser mayor de edad.</li>
@@ -41,9 +41,12 @@
             <!-- IMAGENES 
             <div></div>
                 --->
-            <!--- STATS 
-            <div></div>
-                --->
+            <div>
+                <div style="background: #00002F; text-align: center;">
+                    <h3>Estadísticas</h3>
+                    @yield('stats')
+                </div>
+            </div>
         </div>
     </div>
     <div class="in-flex" id="recent">
@@ -54,5 +57,5 @@
     </div>
 </section>
 <div class="footer">
-    <p style="font-size:small; text-align: center;"> <a href="{{ URL::asset('faq') }}">FAQ</a> || <a href="#">Admin</a> || <a href="#">Source Code</a></p></h1>
+    <p style="font-size:small; text-align: center;"> <a href="{{ URL::asset('faq') }}">FAQ</a> || <a href="{{ URL::asset('sign-in') }}">Iniciar sesión</a> || <a href="https://github.com/mychan8/mychan">Source Code</a></p>
 </div>

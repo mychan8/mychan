@@ -3,10 +3,11 @@ body { background-color: black; ; color: white; }
 textarea { border: 1px solid white; overflow: scroll; max-width:3000px; max-height: 250px; min-width: 250px; min-height: 200px; width:100%; height:200px; outline: none; font-family: Blippo Verdana; letter-spacing: 1px; scrollbar-arrow-color: #000066; scrollbar-base-color: #000033; scrollbar-dark-shadow-color: #336699; scrollbar-track-color: #666633; scrollbar-face-color: #cc9933; scrollbar-shadow-color: #DDDDDD; scrollbar-highlight-color: #CCCCCC; }
 h1, h2, h3, h4 { text-align: center; }
 input { text-align: center; border: 2px solid #00008F; margin: 0; padding: 5px 5px; border-radius: 5px; width:25%; max-width: 900px; }
-a:link { color: white; text-decoration: none; } a:visited { color: white; text-decoration: none; } a:hover { color: gold; text-decoration: none; } a:active { color: white; text-decoration: none; }
+a:link { color: gold; text-decoration: none; } a:visited { color: gold; text-decoration: none; } a:hover { color: yellow; text-decoration: none; } a:active { color: gold; text-decoration: none; }
 
-.header { padding: 20px;  background: #00003F; color: white; font-size: medium; position: relative; }
-.header a { text-align: left; font-family: papyrus Verdana; }
+.header { padding: 20px;  background: #00003F; color: white; font-size: x-large; position: relative; }
+.header a { font-family: Trattatello Verdana; }
+.header p {text-align: center; }
 .footer { padding: 15px;  background: #00001F; color: white; position: relative; font-family: papyrus Verdana; }
 
 .home { display: flex; flex-wrap: wrap; }

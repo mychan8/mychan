@@ -13,7 +13,7 @@
 	    @foreach ($comment as $com)
 	        <div>
 	            <div>
-	                <h3 style="text-align: left;"><em>{{ $com->remarkID }}</em> <span style="color: gold"><a href="mailto:{{ $com->email }}">{{ $com->user }}</a> </span> <span style="font-size: x-small">{{ $com->updated_at }}</span></h3>
+	                <h3 style="text-align: left;"><em style="color: gray">{{ $com->remarkID }}</em> <span><a href="mailto:{{ $com->email }}">{{ $com->nick }}</a> </span> <span style="font-size: x-small">{{ $com->updated_at }}</span></h3>
 	            </div>
 	            <div>{{ $com->content }}</div>
 	        </div>

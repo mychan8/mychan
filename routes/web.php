@@ -5,10 +5,23 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('faq', [homeController::class, 'showFAQ']);
-
+/* POST */
 Route::get('b', [homeController::class, 'index']);
+Route::get('b/{post}', [homeController::class, 'showBlog']);
 
-Route::get('b/{box}', [homeController::class, 'showBlog']);
-
+/* COMENTAR */
 Route::post('post', [homeController::class, 'saveRemark']);
+
+
+/* ESTATICO */
+/* Iniciar sesion */
+Route::view('sign-in', 'login');
+/* FAQ */
+Route::view('faq', 'faq');
+/* Registro */
+Route::view('sign-up', 'register');
+
+Route::post('sign-in', [homeController::class, 'signIn']);
+Route::post('sign-up', [homeController::class, 'signUp']);
+
+Route::get('logout', [HomeController::class, 'logout']);

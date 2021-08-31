@@ -13,7 +13,7 @@
     	h1, h3, h4 { text-align: center; color: red; margin-top: 10px; }
     	h4 { text-align: center; color: black; }
     	a:link { color: orange; text-decoration: none; } a:visited { color: orange; text-decoration: none; } a:hover { color: red; text-decoration: none; } a:active { color: white; text-decoration: none; }
-    	li { float: center; font-size: medium; color: black; text-align: center; }
+    	li { float: center; font-size: medium; color: black;  list-style-type: none; }
     	p { width: 50%; margin: 15px; font-size: medium; text-align: right; }
     	.box { box-sizing: border-box; vertical-align: center; padding: 20px; width: 100%;  }
     	.faq { box-shadow: 10px 10px; background-color: yellow; }
@@ -29,10 +29,10 @@
 			<div class="list">
 				<ul>
 					<em>
-					<li>Enlazar o pedir cualquier contenido que viole las leyes del país del usuario;</li>
-					<li>Los mensajes con spam y la publicidad descarada;</li>
-					<li>El uso de bots, o cualquier otra forma de comentario automático o repetitivo (flood);</li>
-					<li>Textos incomprensibles y/o de baja calidad.</li>
+					<li>I. Enlazar o pedir cualquier contenido que viole las leyes del país del usuario;</li>
+					<li>II. Los mensajes con spam y la publicidad descarada;</li>
+					<li>III. El uso de bots, o cualquier otra forma de comentario automático o repetitivo (flood);</li>
+					<li>IV. Textos incomprensibles y/o de baja calidad.</li>
 					</em>
 				</ul>
 			</div>
