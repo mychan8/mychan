@@ -10,5 +10,5 @@ class Mychan extends Model
     use HasFactory;
 
     /* SE GUARDA */
-    protected $fillable = ['goto', 'remarkID', 'user', 'content', 'visitor', 'email', 'password', 'nick'];
+    protected $fillable = ['goto', 'remarkID', 'user', 'content', 'visitor', 'email', 'password', 'nick', 'subtitle', 'description'];
 }

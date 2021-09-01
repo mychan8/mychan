@@ -1,6 +1,6 @@
 * { padding: 0px; margin: 0px; font-family: Trattatello Verdana; }
 body { background-color: black; ; color: white; }
-textarea { border: 1px solid white; overflow: scroll; max-width:3000px; max-height: 250px; min-width: 250px; min-height: 200px; width:100%; height:200px; outline: none; font-family: Blippo Verdana; letter-spacing: 1px; scrollbar-arrow-color: #000066; scrollbar-base-color: #000033; scrollbar-dark-shadow-color: #336699; scrollbar-track-color: #666633; scrollbar-face-color: #cc9933; scrollbar-shadow-color: #DDDDDD; scrollbar-highlight-color: #CCCCCC; }
+textarea { border: 1px solid white; overflow: scroll; max-width:3000px; max-height: 250px; min-width: 150px; min-height: 200px; width:100%; height:200px; outline: none; font-family: Blippo Verdana; letter-spacing: 1px; scrollbar-arrow-color: #000066; scrollbar-base-color: #000033; scrollbar-dark-shadow-color: #336699; scrollbar-track-color: #666633; scrollbar-face-color: #cc9933; scrollbar-shadow-color: #DDDDDD; scrollbar-highlight-color: #CCCCCC; }
 h1, h2, h3, h4 { text-align: center; }
 input { text-align: center; border: 2px solid #00008F; margin: 0; padding: 5px 5px; border-radius: 5px; width:25%; max-width: 900px; }
 a:link { color: gold; text-decoration: none; } a:visited { color: gold; text-decoration: none; } a:hover { color: yellow; text-decoration: none; } a:active { color: gold; text-decoration: none; }
@@ -10,12 +10,14 @@ a:link { color: gold; text-decoration: none; } a:visited { color: gold; text-dec
 .header p {text-align: center; }
 .footer { padding: 15px;  background: #00001F; color: white; position: relative; font-family: papyrus Verdana; }
 
+/* RESPONSIVE */
 .home { display: flex; flex-wrap: wrap; }
 .in-flex { flex: 1; min-width: 300px; }
 .in-flex:first-child { flex: 2; margin: 0; }
 .in-flex div { background: #00003F; padding: 5px; margin: 5px; }
 .in-flex h4 { font-size: x-small; }
 
+/* Decoration */
 #grad { background-image: linear-gradient(0deg, #00003F, #00008F); }
 #grad2 { background-image: linear-gradient(to right, #00002F, #00005F); }
 #btn:hover { cursor: pointer; }

@@ -1,6 +1,8 @@
 @extends('layouts.blog')
 
-@section('name', $mw[0]->user)
+@section('name')
+	<a href="b/{{ str_replace(' ', '-', $mw[0]->user) }}">{{ $mw[0]->user }}</a>
+@endsection
 
 @section('title', $mw[0]->title)
 
@@ -10,13 +12,16 @@
 
 @section('remark')
 	@if( isset($comment) )
-	    @foreach ($comment as $com)
+	    @for ($i=0; $i < count($comment); $i++)
+	    	@if( empty( $comment[$i]->nick ) )
+	    		@break
+	    	@endif
 	        <div>
 	            <div>
-	                <h3 style="text-align: left;"><em style="color: gray">{{ $com->remarkID }}</em> <span><a href="mailto:{{ $com->email }}">{{ $com->nick }}</a> </span> <span style="font-size: x-small">{{ $com->updated_at }}</span></h3>
+	                <h3 style="text-align: left;"><em style="color: gray">{{ $comment[$i]->remarkID }}</em> <span><a href="mailto:{{ $comment[$i]->email }}">{{ $comment[$i]->nick }}</a> </span> <span style="font-size: x-small">{{ $comment[$i]->updated_at }}</span></h3>
 	            </div>
-	            <div>{{ $com->content }}</div>
+	            <div>{{ $comment[$i]->content }}</div>
 	        </div>
-	    @endforeach
+	    @endfor
 	@endif
 @endsection

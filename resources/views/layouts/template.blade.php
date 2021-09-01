@@ -44,7 +44,7 @@
             <div>
                 <div style="background: #00002F; text-align: center;">
                     <h3>Estadísticas</h3>
-                    @yield('stats')
+                    <span>Publicaciones: @yield('stats')</span>
                 </div>
             </div>
         </div>
@@ -59,3 +59,4 @@
 <div class="footer">
     <p style="font-size:small; text-align: center;"> <a href="{{ URL::asset('faq') }}">FAQ</a> || <a href="{{ URL::asset('sign-in') }}">Iniciar sesión</a> || <a href="https://github.com/mychan8/mychan">Source Code</a></p>
 </div>
+</body>

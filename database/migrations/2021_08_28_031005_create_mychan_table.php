@@ -18,11 +18,19 @@ class CreateMychanTable extends Migration
             $table->string('remarkID')->unique();
             $table->string('user', 30)->nullable()->unique();
             $table->string('nick', 30)->nullable();
+            
+            $table->string('subtitle', 50)->nullable();
+            $table->text('description')->nullable();
+
             $table->string('title', 30)->nullable();
             $table->text('content');
             $table->string('email')->nullable();
+
             /* Pertenece a un post */
             $table->string('goto')->nullable();
+
+            /* Publicacion de un usuario */
+            $table->string('by')->nullable();
 
             $table->ipAddress('visitor');
             $table->ipAddress('ban')->nullable();

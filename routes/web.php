@@ -6,8 +6,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']);
 
 /* POST */
-Route::get('b', [homeController::class, 'index']);
-Route::get('b/{post}', [homeController::class, 'showBlog']);
+Route::get('p', [homeController::class, 'index']);
+Route::get('p/{post}', [homeController::class, 'showBlog']);
 
 /* COMENTAR */
 Route::post('post', [homeController::class, 'saveRemark']);
@@ -25,3 +25,8 @@ Route::post('sign-in', [homeController::class, 'signIn']);
 Route::post('sign-up', [homeController::class, 'signUp']);
 
 Route::get('logout', [HomeController::class, 'logout']);
+
+Route::get('b', [homeController::class, 'index']);
+
+/* BOARD AKA PERFIL */
+Route::get('b/{board}', [homeController::class, 'board']);

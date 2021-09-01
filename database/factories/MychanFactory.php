@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Mychan;
+use App\Http\Controllers\Aux;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MychanFactory extends Factory
@@ -14,19 +15,6 @@ class MychanFactory extends Factory
      */
     protected $model = Mychan::class;
 
-    public function randomPassword($lenght=8)
-    {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $pass = array();
-        $alphaLength = strlen($alphabet) - 1;
-
-        for ($i = 0; $i < $lenght; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] .= $alphabet[$n];
-        }
-
-        return implode($pass);
-    }
     /**
      * Define the model's default state.
      *
@@ -34,14 +22,29 @@ class MychanFactory extends Factory
      */
     public function definition()
     {
+
+        $user = $this->faker->unique()->name();
+        $title = $this->faker->unique()->text(15);
+
         return [
-            'user' => $this->faker->unique()->name(),
-            'nick' => $this->faker->name(),
-            'title' => $this->faker->unique()->text(15),
-            'content' => $this->faker->paragraph(5),
-            'visitor' => $this->faker->ipv4(),
+
+            /* Registro */
+            'user' => $user,
             'password' => '$2y$10$xdHMbLJk2O0aJ47CiLbwwehS33r67vSLuxDZf5gVwqmkaGN0/h6xS',
-            'remarkID' => $this->randomPassword()
+
+            /* Información del usuario */
+            'subtitle' => $this->faker->text(10),
+            'description' => $this->faker->paragraph(),
+
+            /* Publicaciones */
+            'nick' => $this->faker->name(),
+            'title' => $title,
+            'content' => $this->faker->paragraph(5),
+            'remarkID' => Aux::randomPassword(),
+            'by' => $user,
+
+            /* Informacion adicional */
+            'visitor' => $this->faker->ipv4(),
         ];
     }
 }

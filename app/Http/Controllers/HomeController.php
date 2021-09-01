@@ -13,6 +13,7 @@ class HomeController extends Controller
     public function index()
     {
 		$mw = Mychan::select('id', 'title', 'content', 'updated_at')->orderBy('id', 'asc')->limit(7)->get();
+
 		$mw[0]->id = Mychan::select('title')->count();
 
 		return view('index', compact('mw'));
@@ -71,8 +72,9 @@ class HomeController extends Controller
 			'goto' => $req->goto
 		]);
 
-		return redirect("/b/".$mw->goto);
+		return redirect("/p/".$mw->goto);
 	}
+
 	/* Iniciar sesion */
 	public function signIn(SignPostForm $req)
 	{
@@ -99,6 +101,7 @@ class HomeController extends Controller
 			return redirect('/');
 		}
 	}
+	
 	/* Registrarse */
 	public function signUp(SignPostForm $req){
 		
@@ -131,5 +134,31 @@ class HomeController extends Controller
 
 		return redirect('/');
 	}
+	public function board(Request $req, $board)
+	{
+		$mw = Mychan::select('subtitle', 'user', 'description', 'remarkID')->orderBy('id', 'desc')->where('user', '=', str_replace("-", " ", $board))->limit(1)->get();	
 
+		/* Si no existe retorna a faq */
+		if(empty($mw[0]->user)){
+			return redirect('/');
+		}
+
+		/* Comentarios */
+		$thread = Mychan::select('title', 'content', 'remarkID')->where('by', '=', $mw[0]->user)->orderBy('id', 'desc')->get();
+		
+		/* Sesión puesta como alternativa a HTTP_REFERRER*/
+		$req->session()->put('referrer', $mw[0]->subtitle);
+		
+		/* Si no hay comentarios, solo muestra la publicacion */
+		if(empty( $thread ))
+		{
+			return view('board')->with('mw', $mw);
+		}
+		else
+		{
+			return view('board')
+			->with('mw', $mw)
+			->with('thread', $thread);
+		}
+	}
 }
