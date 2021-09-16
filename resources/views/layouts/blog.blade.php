@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="border">
-        <form action="post" method="POST">
+        <form action="post" method="post">
 
             @csrf
 
@@ -55,7 +55,7 @@
                 </div>
                 <div>
                     <input type="hidden" name="goto" value="@yield('title')">
-                    <input type="submit" name="submit" id="btn" value="Postear">
+                    <input type="submit" name="submit" id="btn" value="Comentar">
                 </div>
                 </div>
             </div>

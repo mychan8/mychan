@@ -60,6 +60,6 @@
     </div>
 </section>
 <div class="footer">
-    <p style="font-size:small; text-align: center;"> <a href="{{ URL::asset('faq') }}">FAQ</a> || <a href="{{ URL::asset('sign-in') }}">Iniciar sesión</a> || <a href="https://github.com/mychan8/mychan">Source Code</a></p>
+    <p style="font-size:small; text-align: center;"> <a href="{{ URL::asset('faq') }}">FAQ</a> || <a href="{{ URL::asset('sign-up') }}">Registrarse</a> || <a href="https://github.com/mychan8/mychan">Source Code</a></p>
 </div>
 </body>

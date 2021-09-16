@@ -5,7 +5,7 @@
     @if( ! empty( session('user') ))
         <p style="text-align: center; font-size: medium"><a href="b/{{ str_replace(' ', '-', session('user')) }}">Cuenta</a> || <a href="{{ URL::asset('logout') }}">Salir</a></p>
     @else
-        <small> || <a href="sign-in">Iniciar sesión</a></small>
+        <p style="font-size: medium"><a href="sign-in">Iniciar sesión</a></p>
     @endif
 
 @endsection

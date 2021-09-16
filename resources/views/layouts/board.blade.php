@@ -29,5 +29,8 @@
         @yield('post')
     </div>
 </section>
+    <div class="border">
+        @yield('hilos')
+    </div>
     <div style="text-align: center;"><a href="/">Regresar</a></div>
 </body>

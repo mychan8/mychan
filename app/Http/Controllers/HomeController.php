@@ -59,11 +59,6 @@ class HomeController extends Controller
 	/* Guardar comentario */
 	public function saveRemark(RemarkPostForm $req)
 	{
-		if(session('referrer') != $req->goto)
-		{
-			return redirect('faq');
-		}
-
 		$user = empty($req->user) ? Aux::randomName() : $req->user;
 
 		$mw = Mychan::create([
@@ -143,29 +138,38 @@ class HomeController extends Controller
 	/* Perfil */
 	public function board(Request $req, $board)
 	{
-		$mw = Mychan::select('subtitle', 'user', 'description', 'remarkID')->orderBy('id', 'desc')->where('user', '=', str_replace("-", " ", $board))->limit(1)->get();	
+		/* Información del board */
+		$mw = Mychan::select('subtitle', 'user', 'description')->orderBy('id', 'desc')->where('user', '=', str_replace("-", " ", $board))->limit(1)->get();
 
 		/* Si no existe retorna a faq */
 		if(empty($mw[0]->user)){
 			return redirect('/');
 		}
-
-		/* Comentarios */
-		$thread = Mychan::select('title', 'content', 'remarkID')->where('by', '=', $mw[0]->user)->orderBy('id', 'desc')->get();
-		
 		/* Sesión puesta como alternativa a HTTP_REFERRER*/
 		$req->session()->put('referrer', $mw[0]->subtitle);
 
+
+		/* Publicaciones del board */
+		$post = Mychan::select('title', 'by', 'content', 'remarkID', 'updated_at')->where('by', '=', str_replace("-", " ", $board))->orderBy('id', 'desc')->limit(15)->get();
+
+		/* Comentarios */
+		$com = Mychan::select('content', 'goto', 'remarkID', 'updated_at', 'nick', 'email')->where('goto', '!=', 'null')->orderBy('id', 'desc')->get();
+
 		/* Si no hay comentarios, solo muestra la publicacion */
-		if(empty( $thread ))
+		if(empty( $post ))
 		{
 			return view('board')->with('mw', $mw);
+		}
+		else if(empty( $com ))
+		{
+			return view('board')->with('mw', $mw)->with('post', $post);
 		}
 		else
 		{
 			return view('board')
 			->with('mw', $mw)
-			->with('thread', $thread);
+			->with('post', $post)
+			->with('com', $com);
 		}
 	}
 	/* Usuario crea publicación */
