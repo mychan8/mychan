@@ -16,52 +16,55 @@
     <div class="header" id="grad">
         <h2>@yield('name')</h2> 
     </div>
-<section class="home">
-    <div class="in-flex">
-        <div class="border">
-            <div style="border: 2px solid line 2px;">
-                <h3 style="text-align: left">@yield('title') <span style="font-size: x-small">@yield('date')</span></h3>
-            </div>
-        <!-- IMAGENES 
-            <div></div>
-                --->
-            <div style="text-align: center;">@yield('content')</div>
-            <div>
-                @yield('remark')
-            </div>
+<section class="flex blue padding-5">
+    <div class="border remark">
+        <div class="padding-5">
+            <h3 style="text-align: left">@yield('title') <span style="font-size: x-small">@yield('date')</span></h3>
         </div>
-        <div class="border">
-            <form action="post" method="POST">
-
-                @csrf
-
-               <div id="grad2" class="in-flex">
-                    <textarea 
-                    name="content"
-                    class="textinput"
-                    rows="40" 
-                    cols="100" 
-                    maxlength="500"
-                    minlength="10" value="{{ old('content') }}"></textarea>
-                    @error('content')
-                    <br>
-                        <small style="color: gold;">*{{ $message }}</small>
-                    <br>
-                    @enderror
-                </div>     
-                <div class="center" id="grad2">
-                    <div>
-                        <input type="text" name="user" id="name" maxlength="30" placeholder="Nombre" value="{{ old('user') }}">
-                        <input type="text" name="email" maxlength="30" id="email" placeholder="Email" value="{{ old('email') }}">
-                        <input type="hidden" name="goto" value="@yield('title')">
-                        <input type="submit" name="submit" id="btn" value="Postear">
-                    </div>
-                </div>
-            </form>
+        <div class="padding-5">@yield('content')</div>
+        <div class="padding-5">
+            @yield('remark')
         </div>
     </div>
+    <div class="border">
+        <form action="post" method="POST">
+
+            @csrf
+
+           <div id="grad2" class="flex-item">
+                <textarea 
+                name="content"
+                class="textinput"
+                rows="40" 
+                cols="100" 
+                maxlength="1000" 
+                required="required"
+                minlength="10" autocomplete="{{ old('content') }}"></textarea>
+                @error('content')
+                <br>
+                    <small style="color: gold;">*{{ $message }}</small>
+                <br>
+                @enderror
+            </div>     
+            <div class="flex border-blue" id="grad2">
+                <div>
+                    <input type="text" name="user" id="name" maxlength="30" placeholder="Nombre" value="{{ old('user') }}">
+                </div>
+                <div>
+                    <input type="text" name="email" maxlength="30" id="email" placeholder="Email" value="{{ old('email') }}">
+                </div>
+                <div>
+                    <input type="hidden" name="goto" value="@yield('title')">
+                    <input type="submit" name="submit" id="btn" value="Postear">
+                </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </section>
+
 <div>
-    <h4 style="margin:40px"><a href="/">Regresar</a></h4>
+    <h4 style="padding: 20px;"><a href="/">Regresar</a></h4>
 </div>
+
 </body>

@@ -18,7 +18,7 @@
 </head>
 <body style="background-image: url({{ URL::asset('img/starsbg.gif') }});">
     <div class="header" id="grad">
-        <p><a href="#">MyChan</a>@yield('account')</p>
+        <h2 style="color: gold">MyChan</h2>@yield('account')
     </div>
 <section class="home">
     <div class="in-flex">
@@ -46,6 +46,9 @@
                     <h3>Estadísticas</h3>
                     <span>Publicaciones: @yield('stats')</span>
                 </div>
+            </div>
+            <div>
+                @yield('post')
             </div>
         </div>
     </div>

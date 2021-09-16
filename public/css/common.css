@@ -1,8 +1,8 @@
 * { padding: 0px; margin: 0px; font-family: Trattatello Verdana; }
 body { background-color: black; ; color: white; }
-textarea { border: 1px solid white; overflow: scroll; max-width:3000px; max-height: 250px; min-width: 150px; min-height: 200px; width:100%; height:200px; outline: none; font-family: Blippo Verdana; letter-spacing: 1px; scrollbar-arrow-color: #000066; scrollbar-base-color: #000033; scrollbar-dark-shadow-color: #336699; scrollbar-track-color: #666633; scrollbar-face-color: #cc9933; scrollbar-shadow-color: #DDDDDD; scrollbar-highlight-color: #CCCCCC; }
+textarea { border: 1px solid white; overflow: scroll; max-width:3000px; max-height: 300px; min-width: 150px; min-height: 200px; width:100%; height:150px; outline: none; font-family: Blippo Verdana; letter-spacing: 1px; scrollbar-arrow-color: #000066; scrollbar-base-color: #000033; scrollbar-dark-shadow-color: #336699; scrollbar-track-color: #666633; scrollbar-face-color: #cc9933; scrollbar-shadow-color: #DDDDDD; scrollbar-highlight-color: #CCCCCC; }
 h1, h2, h3, h4 { text-align: center; }
-input { text-align: center; border: 2px solid #00008F; margin: 0; padding: 5px 5px; border-radius: 5px; width:25%; max-width: 900px; }
+input { text-align: center;  margin: 0; padding: 5px 5px; border-radius: 5px; width:100%; max-width: 170px; }
 a:link { color: gold; text-decoration: none; } a:visited { color: gold; text-decoration: none; } a:hover { color: yellow; text-decoration: none; } a:active { color: gold; text-decoration: none; }
 
 .header { padding: 20px;  background: #00003F; color: white; font-size: x-large; position: relative; }
@@ -10,19 +10,39 @@ a:link { color: gold; text-decoration: none; } a:visited { color: gold; text-dec
 .header p {text-align: center; }
 .footer { padding: 15px;  background: #00001F; color: white; position: relative; font-family: papyrus Verdana; }
 
+
 /* RESPONSIVE */
 .home { display: flex; flex-wrap: wrap; }
 .in-flex { flex: 1; min-width: 300px; }
 .in-flex:first-child { flex: 2; margin: 0; }
-.in-flex div { background: #00003F; padding: 5px; margin: 5px; }
+.in-flex div { background: #00003F; padding: 5px; margin: 2px; }
 .in-flex h4 { font-size: x-small; }
+
+.flex div { max-width: 800px; }
+.flex { display: flex; flex-flow: row wrap; justify-content: center; align-items: center; order: 3; }
+.flex-item { margin: 5px; }
+.flex-box { max-width: 800px; }
+
+.blue div { background: #00003F; }
+.border-blue input { border: 2px solid #00008F; }
+
+.padding-5 { padding: 5px; }
+.padding-10 { padding: 10px; }
+.padding-20 { padding: 20px; }
+
+.margin-5 { margin: 5px; }
+.margin-b-5 { margin-bottom: 5px; }
+
+.remark { max-width: 800px; width: 100%; margin: 5px; padding: 5px;  }
+.button-sign input { max-width: 400px; width: 100%; }
 
 /* Decoration */
 #grad { background-image: linear-gradient(0deg, #00003F, #00008F); }
 #grad2 { background-image: linear-gradient(to right, #00002F, #00005F); }
+#btn { width: 150px; }
 #btn:hover { cursor: pointer; }
 
 .center { vertical-align: center; text-align: center; -webkit-box-sizing:border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-.border { border: 1px outset white; margin-left: 2.5%; margin-right: 2.5%; padding: 6px; margin-bottom: 1em; background: linear-gradient( rgba(34,1,34,0.7), rgba(34,1,34,0.7) ); box-shadow: 0px 0px 7px 1px #888888;  }
+.border { border: 1px outset white; margin-left: 2.5%; margin-right: 2.5%; padding: 6px; margin-bottom: 1em; box-shadow: 0px 0px 7px 1px #888888;  }
 .thread { padding: 6px; border-top: 1px solid #737373; border-left: 1px solid #737373; border-right: 1px solid #FBFBFB; border-bottom: 1px solid #FBFBFB; }
 #recent textarea { color: white; background-color: #00003F; border-color: #00003F; min-height: 150px; }

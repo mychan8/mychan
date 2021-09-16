@@ -19,14 +19,15 @@
     <div class="header" id="grad">
         <p style="color: gold;">@yield('title')</p>
     </div>
-<section class="home">
-    <div class="in-flex">
+<section class="flex">
+    <div class="flex-item">
         @yield('description')
         <!---- Hilos ----->
-        <div style="margin: 20px;" class="border">
+        <div style="margin: 20px; background:#00003F;" class="border">
             @yield('thread')
         </div>
         @yield('post')
     </div>
 </section>
+    <div style="text-align: center;"><a href="/">Regresar</a></div>
 </body>

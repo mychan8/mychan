@@ -7,12 +7,14 @@ use App\Models\Mychan;
 use App\Http\Controllers\Aux;
 use App\Http\Requests\RemarkPostForm;
 use App\Http\Requests\SignPostForm;
+use App\Http\Requests\Post;
 
 class HomeController extends Controller
 {
+	/* Página principal */
     public function index()
     {
-		$mw = Mychan::select('id', 'title', 'content', 'updated_at')->orderBy('id', 'asc')->limit(7)->get();
+		$mw = Mychan::select('id', 'title', 'content', 'updated_at')->orderBy('id', 'desc')->where('user', '!=', 'null')->limit(7)->get();
 
 		$mw[0]->id = Mychan::select('title')->count();
 
@@ -20,6 +22,8 @@ class HomeController extends Controller
 	}
 
 	/**
+	* Mostrar publicacion de un usuario con comentarios o no 
+	*
 	* @param string $post url
 	* @return view
 	*	-> FAQ
@@ -28,7 +32,7 @@ class HomeController extends Controller
 	public function showBlog(Request $req, $post)
 	{
 		/* Publicacion */
-		$mw = Mychan::select('user', 'title', 'content', 'updated_at', 'remarkID')->orderBy('id', 'desc')->where('title', '=', str_replace("-", " ", $post))->limit(1)->get();	
+		$mw = Mychan::select('by', 'title', 'content', 'updated_at', 'remarkID')->orderBy('id', 'desc')->where('title', '=', str_replace("-", " ", $post))->limit(1)->get();	
 
 		/* Si no existe retorna a faq */
 		if(empty( $goto = $mw[0]->title)){
@@ -52,7 +56,7 @@ class HomeController extends Controller
 			->with('comment', $comment);
 		}
 	}
-
+	/* Guardar comentario */
 	public function saveRemark(RemarkPostForm $req)
 	{
 		if(session('referrer') != $req->goto)
@@ -91,6 +95,7 @@ class HomeController extends Controller
 
 			if(password_verify($req->password, $auth[0]->password))
 			{
+				/* Crear sesion con el nombre del usuario que inició sesión */
 				$req->session()->put('user', $req->user);
 			}
 			else
@@ -122,18 +127,20 @@ class HomeController extends Controller
 			'visitor' => $req->ip()
 			]);
 		}
-
+		/* Crear sesion con el nombre del usuario que se registró */
 		$req->session()->put('user', $req->user);
 
 		return redirect('/');
 	}
-
+	/* Eliminar todas las sesiones */
 	public function logout(Request $req)
 	{
 		$req->session()->invalidate();
 
 		return redirect('/');
 	}
+
+	/* Perfil */
 	public function board(Request $req, $board)
 	{
 		$mw = Mychan::select('subtitle', 'user', 'description', 'remarkID')->orderBy('id', 'desc')->where('user', '=', str_replace("-", " ", $board))->limit(1)->get();	
@@ -148,7 +155,7 @@ class HomeController extends Controller
 		
 		/* Sesión puesta como alternativa a HTTP_REFERRER*/
 		$req->session()->put('referrer', $mw[0]->subtitle);
-		
+
 		/* Si no hay comentarios, solo muestra la publicacion */
 		if(empty( $thread ))
 		{
@@ -161,4 +168,30 @@ class HomeController extends Controller
 			->with('thread', $thread);
 		}
 	}
+	/* Usuario crea publicación */
+	public function createPost(Post $req)
+	{
+		/* Comprobar input 'by' por la sesion del usuario para eliminar posible publicacion en nombre de otro usuario */
+		if(session('user') != $req->by)
+		{
+			return redirect('faq');
+		}
+
+		$user = empty($req->user) ? Aux::randomName() : $req->user;
+
+		$mw = Mychan::create([
+			'title' => $req->title,
+			'content' => $req->content,
+			'email' => $req->email,
+			'nick' => $user,
+			'visitor' => $req->ip(),
+			'password' => Aux::randomPassword(8),
+			'remarkID' => Aux::randomPassword(4),
+			'by' => $req->by,
+		]);
+
+		return redirect("/p/".$req->title);
+	}
+
+
 }
